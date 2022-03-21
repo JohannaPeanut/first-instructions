@@ -34,6 +34,8 @@
   src: url('fonts/Arapey-Italic.ttf');
 }
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
 :root {
   --color: #58f955;
 }
@@ -46,6 +48,9 @@ html {
   font-family: Roboto, Arial, sans-serif;
   font-size: 8px;
   background-image: url('images/marble.jpg');
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🪵</text></svg>")
+      16 0,
+    auto;
 }
 
 body {
@@ -105,10 +110,12 @@ aside div {
   transform: rotate(-90deg);
 }
 
-section {
+.first-section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
+  height: 45vh;
 }
 
 .big-input-div {
@@ -149,13 +156,29 @@ input:focus {
   outline: none;
 }
 
+.fixed-position {
+  position: fixed;
+  top: 8em;
+}
+
+.smaller-size {
+
+}
+
+.second-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .tutorial-text {
   font-family: inherit;
   margin-top: 4em;
   padding: 0 4em;
   background: #fffdfd;
   mix-blend-mode: multiply;
-  box-shadow: inset 8px 8px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   max-width: 100em;
 }
@@ -167,14 +190,12 @@ input:focus {
 
 .transparent {
   color: transparent;
-  border: 0;
   box-shadow: none;
 }
 
 .opaque {
   color: black;
-  border: 0;
-  box-shadow: none;
+  box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.25);
 }
 
 footer {
@@ -204,4 +225,10 @@ footer button {
 .imprint-button {
   background-color: var(--color);
   border: none;
+}
+
+.fire-cursor {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🔥</text></svg>")
+      16 0,
+    auto;
 }

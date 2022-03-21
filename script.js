@@ -2,7 +2,22 @@ const inputElement = document.querySelector('input');
 const infoButtonElement = document.querySelector('.info-button');
 const feedbackButtonElement = document.querySelector('.feedback-button');
 const infoDivElement = document.querySelector('.info');
+const inputDivElement = document.querySelector('.big-input-div');
+const tutorialDivElement = document.querySelector('.tutorial-text');
 const tutorialParElement = document.querySelector('.tutorial-paragraph');
+const firstSectionElement = document.querySelector('section');
+
+window.addEventListener('scroll', () => {
+  let rect = inputDivElement.getBoundingClientRect();
+  if (rect.top < 40) {
+    inputDivElement.classList.add('fixed-position');
+    firstSectionElement.add('smaller-size')
+  }
+//   let rect2 = tutorialDivElement.getBoundingClientRect();
+//   if (rect2.top < 40) {
+//     inputDivElement.classList.add('fixed-position');
+//   }
+});
 
 infoButtonElement.addEventListener('click', () => {
   if (infoDivElement.classList.contains('invisible')) {
@@ -17,12 +32,12 @@ infoButtonElement.addEventListener('click', () => {
 window.addEventListener('keydown', createTutorial);
 
 function createTutorial(event) {
-  if (event.keyCode === 9) {
+  if (event.keyCode === 9 || event.keyCode === 13) {
     event.preventDefault();
     const input = 'How to ' + inputElement.value;
     callModel(input);
-    tutorialParElement.classList.add('opaque');
-    tutorialParElement.classList.remove('transparent');
+    tutorialDivElement.classList.add('opaque');
+    tutorialDivElement.classList.remove('transparent');
     //printTutorial
   }
 }
@@ -38,7 +53,7 @@ async function fetchText() {
   console.log(response.statusText); // OK
   if (response.status === 200) {
     let data = await response.text();
-    console.log(data); // handle data
+    tutorialParElement.innerHTML = data; // handle data
   }
 }
 
